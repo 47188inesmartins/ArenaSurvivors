@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "266713404419",
+    "project_id": "arenafcul",
+    "storage_bucket": "arenafcul.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266713404419:android:3d71abfe59e9eaf5edea36",
+        "android_client_info": {
+          "package_name": "fcul.mei.cm.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFYJcNqJ5WGjFrFk_vIb8OiTAt_sXl8gY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

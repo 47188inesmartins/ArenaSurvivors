@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Arena Survivors</string>
+    <string name="firebase_db_url">https://arenafcul-default-rtdb.europe-west1.firebasedatabase.app/</string>
+    <string name="start_talking">No messages yet, start chatting!</string>
+    <string name="unknown_user">Unknown User</string>
+    <string name="type_message">Type a message...</string>
+    <string name="send_message">Send</string>
+    <string name="show_members">Show Members</string>
+    <string name="change_chat">Change Alliance Chat</string>
+    <string name="request_to_join">Request to join</string>
+    <string name="name">Name: </string>
+    <string name="title">Arena Survivors</string>
+    <string name="temperature_sensor_not_available">Temperature sensor not supported by this device</string>
+    <string name="sensor_not_supported_generic">The sensor is not supported by this device</string>
+    <string name="humidity_sensor_not_available">Humidity sensor not supported by this device</string>
+    <string name="current_temperature_celsius">Current Temperature: %1$s°C</string>
+    <string name="current_step_count">Current Steps: %1$s</string>
+    <string name="current_humidity">Current Humidity: %1$s</string>
+    <string name="_1f">%.1f</string>
+    <string name="accelerometer_data_not_available">Accelerometer data not available</string>
+    <string name="_2f">%.2f</string>
+    <string name="player_is_dead">Player is dead</string>
+    <string name="player_is_alive">Player is alive</string>
+    <string name="heartbeat_bpm">HeartBeat: %1$s bpm</string>
+    <string name="district">District: %s</string>
+    <string name="health_status">Player is %s</string>
+    <string name="status_alive">Status: Alive</string>
+    <string name="status_dead">Status: Dead</string>
+    <string name="stub_content_description">Random description</string>
+</resources>
