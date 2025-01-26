@@ -16,7 +16,7 @@ import fcul.mei.cm.app.domain.Health
 import fcul.mei.cm.app.domain.User
 import fcul.mei.cm.app.utils.SensorsUtils
 import fcul.mei.cm.app.utils.UserSharedPreferences
-import fcul.mei.cm.app.utils.createNotificationChannel
+
 
 @SuppressLint("StaticFieldLeak")
 class SensorsViewModel( val context: Context) : ViewModel() {

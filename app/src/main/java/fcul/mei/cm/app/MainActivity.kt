@@ -27,7 +27,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import fcul.mei.cm.app.ui.theme.AppTheme
-import fcul.mei.cm.app.utils.createNotificationChannel
 import fcul.mei.cm.app.viewmodel.FitnessViewModel
 import fcul.mei.cm.app.viewmodel.SensorsViewModel
 import fcul.mei.cm.app.viewmodel.UserViewModel

@@ -246,7 +246,8 @@ fun ArenaMapUi(
             }
         )
     }
-    Log.d("omg2", placingMarker.toString())
+    Log.d("placing marker", placingMarker.toString())
+    Log.d("static location", placingStaticLocation.toString())
     // Map UI
     Box(modifier = modifier) {
         AndroidView(factory = { mapView }, modifier = Modifier.fillMaxSize()) { view ->
@@ -568,6 +569,9 @@ fun ArenaMapUi(
 
                                         Button(
                                             onClick = {
+                                                if (userId != null) {
+                                                addCurrentUserToSharedUsers(user.id, userId, false, context)
+                                                }
                                                 showStaticLocationDialog = true
                                             },
                                             modifier = Modifier.fillMaxWidth()
@@ -861,87 +865,6 @@ fun updateUserMarker(
 }
 
 
-//
-//@Composable
-//fun SendCoordinatesDialog(
-//    onDismiss: () -> Unit,
-//    onSubmit: (Double, Double) -> Unit
-//) {
-//    var latitude by remember { mutableStateOf("") }
-//    var longitude by remember { mutableStateOf("") }
-//
-//    AlertDialog(
-//        onDismissRequest = { onDismiss() },
-//        title = { Text("Enter Coordinates") },
-//        text = {
-//            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-//                OutlinedTextField(
-//                    value = latitude,
-//                    onValueChange = { latitude = it },
-//                    label = { Text("Latitude") },
-//                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-//                )
-//                OutlinedTextField(
-//                    value = longitude,
-//                    onValueChange = { longitude = it },
-//                    label = { Text("Longitude") },
-//                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-//                )
-//            }
-//        },
-//        confirmButton = {
-//            Button(onClick = {
-//                val lat = latitude.toDoubleOrNull() ?: 0.0
-//                val lng = longitude.toDoubleOrNull() ?: 0.0
-//                onSubmit(lat, lng)
-//                onDismiss()
-//            }) {
-//
-//                Text("Submit")
-//            }
-//        },
-//        dismissButton = {
-//            Button(onClick = { onDismiss() }) {
-//                Text("Cancel")
-//            }
-//        }
-//    )
-//}
-//
-//@RequiresApi(Build.VERSION_CODES.S)
-//@Composable
-//fun ArenaMapWithSendCoordinates(
-//    modifier: Modifier = Modifier
-//) {
-//    var showDialog by remember { mutableStateOf(false) }
-//    var userLatitude by remember { mutableDoubleStateOf(0.0) }
-//    var userLongitude by remember { mutableDoubleStateOf(0.0) }
-//    val coordinates = CoordinatesRepository()
-//
-//    Box(Modifier.fillMaxWidth()) {
-//        //ArenaMapUi(
-////            pointLatitude = userLatitude,
-////            pointLongitude = userLongitude,
-////            onSendCoordinates = { _, _ -> showDialog = true }
-//        //)
-//
-//        if (showDialog) {
-//            SendCoordinatesDialog(
-//                onDismiss = { showDialog = false },
-//                onSubmit = { lat, lng ->
-//                    userLatitude = lat
-//                    userLongitude = lng
-//
-//                    coordinates.saveCoordinates(
-//                        "2",
-//                        Coordinates(userLongitude, userLatitude)
-//                    )
-//                }
-//            )
-//        }
-//    }
-//}
-
 @Composable
 fun StyledButton(
     text: String,
@@ -1065,12 +988,6 @@ fun addCurrentUserToSharedUsers(
 
                 // Update Firestore with the new list
                 userRef.update("sharedUserLocations", updatedLocations)
-                    .addOnSuccessListener {
-                        Toast.makeText(context, "User sharing updated successfully!", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener { exception ->
-                        Toast.makeText(context, "Failed to update sharing: ${exception.message}", Toast.LENGTH_SHORT).show()
-                    }
             } else {
                 // If the document doesn't exist, create it with the first entry
                 userRef.set(
@@ -1079,9 +996,7 @@ fun addCurrentUserToSharedUsers(
                             mapOf(currentUserId to real)
                         )
                     )
-                ).addOnSuccessListener {
-                    Toast.makeText(context, "User sharing initialized successfully!", Toast.LENGTH_SHORT).show()
-                }.addOnFailureListener { exception ->
+                ).addOnFailureListener { exception ->
                     Toast.makeText(context, "Failed to initialize sharing: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
             }
